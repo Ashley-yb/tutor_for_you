@@ -74,18 +74,20 @@ with st.sidebar:
     st.header("⚙️ API 配置")
     
     st.markdown("""
-    ### 🔑 使用说明
+    ### 🔑 获取 API Key
     
     本应用需要您提供自己的 API Key：
     
     **1. MinerU API Token**（两步模式需要）
-    - 访问 [OpenXLab](https://openxlab.org.cn/)
-    - 注册并获取 Token
+    - 访问 [MinerU](https://mineru.net/)
+    - 注册/登录账号
+    - 在控制台获取 API Token
     
     **2. 通义千问 API Key**（必须）
     - 访问 [阿里云 DashScope](https://dashscope.aliyun.com/)
-    - 注册并创建 API Key
-    - 新用户有免费额度
+    - 注册/登录阿里云账号
+    - 创建 API Key
+    - 新用户有免费额度可用
     
     💡 **提示**：您的 API Key 仅用于本次会话，不会被保存
     """)
