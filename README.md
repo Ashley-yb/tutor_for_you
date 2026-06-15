@@ -1,6 +1,12 @@
 # 📚 高中题目智能解答助手
 
+初高中同学，遇到难题想拍照解答，但发现大模型图片识别不精准，数学公式都成为乱码
+或许可以尝试下这个！
+
+
 一个基于 AI 的高中题目识别与解答系统，帮助学生快速获取题目解析。
+图片识别调用智能文档解析软件MinerU技术，精准识别数学物理公式、语文繁简字、中英文等各种疑难杂症
+解答调用千问大模型
 
 ## ✨ 功能特点
 
@@ -27,18 +33,6 @@ streamlit run app.py
 
 浏览器会自动打开 http://localhost:8501
 
-### 🌐 公开部署（推荐）
-
-想让任何人都能访问？查看 [QUICK_DEPLOY.md](QUICK_DEPLOY.md) 或 [DEPLOY.md](DEPLOY.md)
-
-**只需 5 分钟，完全免费！**
-
-1. 上传代码到 GitHub
-2. 部署到 Streamlit Cloud
-3. 分享链接给用户
-
-用户使用时需要自己提供 API Key。
-
 ## 📖 使用流程
 
 1. **上传图片**：点击上传按钮，选择题目图片（JPG/PNG）
@@ -50,7 +44,7 @@ streamlit run app.py
 
 ### MinerU API Token
 
-1. 访问 [OpenXLab](https://openxlab.org.cn/)
+1. 访问 [MinerU](https://mineru.net/)
 2. 注册/登录账号
 3. 在控制台获取 API Token
 
@@ -63,15 +57,8 @@ streamlit run app.py
 
 ## 💰 费用说明
 
-- **MinerU**: 按图片数量计费，约 0.1-0.5 元/次
-- **通义千问**: qwen-turbo 模型价格低廉，新用户有免费额度
-
-## 🛠️ 技术栈
-
-- **前端**: Streamlit
-- **图片识别**: MinerU (OCR)
-- **大模型**: 通义千问 (Qwen)
-- **语言**: Python 3.8+
+- 网站本身不收费，在MinerU和阿里API调用过程中可能产生费用
+- 目前MinerU和阿里API的免费额度基本能覆盖日常需求，无需额外付费
 
 ## 📝 注意事项
 
