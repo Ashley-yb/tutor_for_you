@@ -17,7 +17,9 @@
 
 ## 🚀 快速开始
 
-### 本地运行
+## 已经上线网址，可直接使用👉https://tutorforyou-kmmknayzyawlkznvmwasmb.streamlit.app/
+
+### 如果要本地运行：
 
 #### 1. 安装依赖
 
