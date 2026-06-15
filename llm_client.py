@@ -8,6 +8,33 @@ import requests
 import base64
 
 
+PROXY_ENV_KEYS = (
+    "HTTP_PROXY",
+    "HTTPS_PROXY",
+    "ALL_PROXY",
+    "http_proxy",
+    "https_proxy",
+    "all_proxy",
+)
+
+
+def _disable_proxy_env() -> None:
+    for key in PROXY_ENV_KEYS:
+        os.environ.pop(key, None)
+    os.environ["NO_PROXY"] = "*"
+    os.environ["no_proxy"] = "*"
+
+
+def _request(method: str, url: str, **kwargs):
+    """发送请求时忽略系统代理环境变量，避免国内直连场景被错误代理劫持。"""
+    _disable_proxy_env()
+    kwargs.setdefault("proxies", {"http": None, "https": None})
+    with requests.Session() as session:
+        session.trust_env = False
+        session.proxies.clear()
+        return session.request(method, url, **kwargs)
+
+
 def get_answer_from_qwen(question_text: str, subject: str = "综合", api_key: str = None) -> str:
     """
     调用通义千问 API 生成题目解答（纯文本模式）
@@ -68,7 +95,7 @@ def get_answer_from_qwen(question_text: str, subject: str = "综合", api_key: s
             }
         }
         
-        response = requests.post(url, json=data, headers=headers, timeout=60)
+        response = _request("POST", url, json=data, headers=headers, timeout=60)
         response.raise_for_status()
         
         result = response.json()
@@ -149,7 +176,7 @@ def get_answer_from_image(image_path: str, subject: str = "综合", api_key: str
         }
         
         print("正在调用通义千问 VL 模型...")
-        response = requests.post(url, json=data, headers=headers, timeout=120)
+        response = _request("POST", url, json=data, headers=headers, timeout=120)
         response.raise_for_status()
         
         result = response.json()
